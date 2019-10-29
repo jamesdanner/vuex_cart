@@ -16,6 +16,24 @@ export default {
       active: 0,
     };
   },
+  watch: {
+    active(newValue) {
+      switch (newValue) {
+        case 0:
+          this.$router.push({
+            path: '/'
+          });
+          break;
+        case 1:
+          this.$router.push({
+            path: '/cart'
+          });
+          break;
+        default:
+          break;
+      }
+    }
+  }
 }
 </script>
 
