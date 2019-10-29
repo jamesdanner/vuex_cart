@@ -5,21 +5,32 @@
 			:goods="item" 
 			:key="index" >
 		</goods-item>
-    1
   </div>
 </template>
 
 <script>
 import goodsItem from '@/components/goodsItem.vue'
 import goodsData from '@/dbData/index'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: { goodsItem },
   data() {
     return {
-      goodsList: goodsData,
     };
-  }
+  },
+  methods: {
+    ...mapActions({
+      fetchGoods: 'cart/fetchGoods'
+    })
+  },
+  computed: mapGetters({
+    goodsList: 'cart/goodsList'
+  }),
+  created() {
+    this.fetchGoods();
+  },
+  
 }
 </script>
 
