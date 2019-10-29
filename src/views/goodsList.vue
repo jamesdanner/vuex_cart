@@ -1,15 +1,31 @@
 <template>
   <div class="goods-list">
-    商品列表
+    <goods-item 
+			v-for="(item, index) in goodsList" 
+			:goods="item" 
+			:key="index" >
+		</goods-item>
+    1
   </div>
 </template>
 
 <script>
-export default {
+import goodsItem from '@/components/goodsItem.vue'
+import goodsData from '@/dbData/index'
 
+export default {
+  components: { goodsItem },
+  data() {
+    return {
+      goodsList: goodsData,
+    };
+  }
 }
 </script>
 
-<style>
-
+<style scoped>
+.goods-list {
+  min-height: 100vh;
+  background: #f7f7f7;
+}
 </style>
